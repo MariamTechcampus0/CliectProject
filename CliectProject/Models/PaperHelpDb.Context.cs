@@ -13,10 +13,10 @@ namespace CliectProject.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PaperHelpDbEntities : DbContext
+    public partial class PaperHelpDbEntities1 : DbContext
     {
-        public PaperHelpDbEntities()
-            : base("name=PaperHelpDbEntities")
+        public PaperHelpDbEntities1()
+            : base("name=PaperHelpDbEntities1")
         {
         }
     
@@ -34,5 +34,6 @@ namespace CliectProject.Models
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

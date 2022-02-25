@@ -28,6 +28,7 @@ namespace CliectProject.Models
         public Nullable<double> FastPrice { get; set; }
         public Nullable<int> FastHour { get; set; }
         public string Photo { get; set; }
+        public Nullable<bool> Sale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CliectProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,14 @@ namespace CliectProject.Controllers
 {
     public class ServicesController : Controller
     {
+         public PaperHelpDbEntities1 db = new PaperHelpDbEntities1();
+        
         // GET: Services
         public ActionResult Index()
         {
-            var db = new 
-            return View();
+            /*Select all services*/
+            var s = db.Services.ToList();
+            return View(s);
         }
     }
 }
