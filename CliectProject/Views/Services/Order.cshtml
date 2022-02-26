@@ -1,0 +1,44 @@
+﻿@using CliectProject.Models;
+@model Service
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Order</h2>
+
+<section class="portfolio" id="portfolio" action="@Url.Action("Order", "Services", new { id=Model.Id })" method="post" >
+
+    <h1 class="heading"> <span>Services</span> </h1>
+
+    <div class="box-container">
+
+        @if (Model.Sale == false)
+        {
+            <div class="box">
+                <img src="@Url.Content(Model.Photo)" alt="">
+                <div class="content">
+                    <h3>@Model.Name</h3>
+                    <p>@Model.Description</p>
+
+
+                </div>
+            </div>
+        }
+        else
+        {
+    <div class="box">
+        <span>Sale</span>
+        <img src="@Url.Content(Model.Photo)" alt="">
+        <div class="content">
+            <h3>@Model.Name</h3>
+            <p>@Model.Description</p>
+
+
+        </div>
+    </div>
+
+        }
+
+
+    </div>
+</section>

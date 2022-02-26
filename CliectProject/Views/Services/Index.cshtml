@@ -24,7 +24,7 @@
             <div class="content">
                 <h3>@s.Name</h3>
                 <p>@s.Description</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
+                <a href="@Url.Action("Order", "Services", new { id = s.Id })" class="btn" style="text-align:center; width:150px">Order Now</a>
             </div>
         </div>
                 }
@@ -53,7 +53,7 @@
             <div class="content">
                 <h3>@ss.Name</h3>
                 <p>@ss.Description</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
+                <a href="@Url.Action("Order", "Services", new { id = ss.Id })" class="btn" style="text-align:center; width:150px">Order Now</a>
             </div>
         </div>
         }

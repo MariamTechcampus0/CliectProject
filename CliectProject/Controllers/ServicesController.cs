@@ -18,5 +18,17 @@ namespace CliectProject.Controllers
             var s = db.Services.ToList();
             return View(s);
         }
+
+        public ActionResult Order( int id)
+        {
+
+            // get book by id
+            var O = db.Services.FirstOrDefault(b => b.Id == id);
+
+           
+
+            return View(O);
+            
+        }
     }
 }
