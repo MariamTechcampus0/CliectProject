@@ -1,13 +1,14 @@
 ﻿@using CliectProject.Models;
 @model Service
+
 @{
     ViewBag.Title = "Order";
 }
 
 <h2>Order</h2>
 
-<section class="portfolio" id="portfolio" action="@Url.Action("Order", "Services", new { id=Model.Id })" method="post" >
-
+<section class="portfolio" id="portfolio" @*action="@Url.Action("AddOrder_2", "Services")" method="post"*@>
+   
     <h1 class="heading"> <span>Services</span> </h1>
 
     <div class="box-container">
@@ -26,19 +27,84 @@
         }
         else
         {
-    <div class="box">
-        <span>Sale</span>
-        <img src="@Url.Content(Model.Photo)" alt="">
-        <div class="content">
-            <h3>@Model.Name</h3>
-            <p>@Model.Description</p>
+            <div class="box">
+                <span>Sale</span>
+                <img src="@Url.Content(Model.Photo)" alt="">
+                <div class="content">
+                    <h3>@Model.Name</h3>
+                    <p>@Model.Description</p>
 
 
+                </div>
+            </div>
+        }
+    </div>
+
+    @Html.Action("AddOrder_2", new { id = Model.Id })
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("AddOrder_3", "Services", new { id = Model.Id })" class="btn" style="text-align:center; width:150px">Order Now</a>
+            @*<input type="submit" value="Create" class="btn btn-default" />*@
         </div>
     </div>
 
-        }
 
 
-    </div>
+
+
+
+
+
+
+    <!--<section style="background-color: #e8786e; width: 80%; height: 600px; align-items: center">
+        <form>-->
+    <!--Type of order code-->
+    <!--<strong>Type of Order</strong>
+    <hr />
+
+    <input type="radio" id="C" name="Order" value="Critical">
+    <label for="c">Critical</label><br>
+    <input type="radio" id="N" name="Order" value="Normal">
+    <label for="N">Normal</label><br>
+
+    <br />
+    <br />
+    <br />-->
+    <!--File Upload code-->
+    <!--<strong>Attachments</strong>
+    <input type="file" name="upload" />
+
+    <hr />
+    <br />
+    <br />
+    <br />-->
+    <!--Quantity Code-->
+    <!--<label for="quan">Quantity</label>
+    <input id="quan" type="number" name="numper" min="1" max="50" />
+
+    <br />
+    <br />
+    <br />-->
+    <!--Order Details-->
+    <!--<div>
+                <h3>Total Amount:</h3>
+                <p1></p1>
+                <h3>Deadline:</h3>
+                <p1></p1>
+            </div>
+
+
+        </form>
+    </section>-->
+
+
+
+
+
+
+
+
+
+
 </section>

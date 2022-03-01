@@ -35,5 +35,7 @@ namespace CliectProject.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+
+        public System.Data.Entity.DbSet<CliectProject.Models.ViewModels.AddOrder> AddOrders { get; set; }
     }
 }
