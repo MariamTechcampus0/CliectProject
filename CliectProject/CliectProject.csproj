@@ -256,6 +256,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\OD.png" />
     <Content Include="images\search.jpg" />
     <Content Include="images\about-img.png" />
     <Content Include="images\cloud.png" />
@@ -278,6 +279,7 @@
     <Content Include="images\s-4.png" />
     <Content Include="images\s-5.png" />
     <Content Include="images\s-6.png" />
+    <Content Include="images\Select.gif" />
     <Content Include="images\Site Stats.gif" />
     <Content Include="js\AddOrder.js" />
     <Content Include="js\JavaScriptPayment.js" />

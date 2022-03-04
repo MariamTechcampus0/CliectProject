@@ -6,105 +6,93 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>AddOrder</h4>
-    <hr />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <h1 class="heading"> <span>Add Order</span> </h1>
+    <br />
+    <br />
+    <br />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     @Html.HiddenFor(x => x.ServiceId)
-    <div class="row">
+    <!--Start-->
+    @*<div class="row">
 
 
-        <div class="col-md-10">
-            Normal
-            @Html.RadioButtonFor(model => model.IsNormal, "true")
-            Fast
-            @Html.RadioButtonFor(model => model.IsNormal, "fasle")
-        </div>
-
-
-        <div>
-            <label>Qun</label>
-            <input type="number" id="qty" name="NoOfPaper" placeholder="Qty" value="@Model.NoOfPaper" onclick="add()" />
-        </div>
-
-
-        <div>
-            <label>Description</label>
-            <textarea class="form-control" id="Description" name="Description" value="@Model.Description" rows="2" cols="20">Write Your Paper's Description .</textarea>
-
-        </div>
-
-
-        <div>
-            <label id="price">@Model.Price</label>
-            <input type="text" id="num" name="Price" value="@Model.Price" />
-        </div>
-
-
-        <button type="submit" class="btn btn-info" id="add" name="total">Total</button>
-    </div>
-
-
-
-    <!--<div class="container">
-
-        <h2>What would you like our service to be?</h2>
-        <ul>
-            <li>
-               @Html.RadioButtonFor(model => model.IsNormal, "true")
-                <label>Normal </label>
-
-                <div class="check"></div>
-            </li>
-
-            <li>
+            <div class="col-md-10">
+                Normal
+                @Html.RadioButtonFor(model => model.IsNormal, "true")
+                Fast
                 @Html.RadioButtonFor(model => model.IsNormal, "fasle")
-                <label >Fast </label>
-
-                <div class="check"><div class="inside"></div></div>
-            </li>
-        </ul>
+            </div>
 
 
+            <div>
+                <label>Qun</label>
+                <input type="number" id="qty" name="NoOfPaper" placeholder="Qty" value="@Model.NoOfPaper" onclick="add()" />
+            </div>
 
 
-        <h3 style="color: #AAAAAA;">Quantity of paper :</h3>
+            <div>
+                <label>Description</label>
+                <textarea class="form-control" id="Description" name="Description" value="@Model.Description" rows="2" cols="20">Write Your Paper's Description .</textarea>
 
-        <div class="quantity">
-            <input class="input-num-field" type="number" name="NoOfPaper" value="@Model.NoOfPaper" onclick="add()">
+            </div>
+
+
+            <div>
+                <label id="price">@Model.Price</label>
+                <input type="text" id="num" name="Price" value="@Model.Price" />
+            </div>
+
+
+            <button type="submit" class="btn" style="text-align:center; width:150px" id="add" name="total">Total</button>
+        </div>*@
+    <!--End-->
+    <div class="box-container">
+
+        <div class="box">
+
+            <img src="~/images/Select.gif" />
+            @*<img src="~/images/OD.png" />*@
+            <div class="content">
+                <div class="col-md-10">
+                    Normal
+                    @Html.RadioButtonFor(model => model.IsNormal, "true")
+                    Fast
+                    @Html.RadioButtonFor(model => model.IsNormal, "fasle")
+                </div>
+
+
+                <div>
+                    <label>Qun</label>
+                    <input type="number" id="qty" name="NoOfPaper" placeholder="Qty" value="@Model.NoOfPaper" onclick="add()" />
+                </div>
+
+
+                <div>
+                    <label>Description</label>
+                    <textarea class="form-control" id="Description" name="Description" value="@Model.Description" rows="2" cols="20">Write Your Paper's Description .</textarea>
+
+                </div>
+
+
+                <div>
+                    <label id="price">@Model.Price</label>
+                    <input type="text" id="num" name="Price" value="@Model.Price" />
+                </div>
+
+
+                <button type="submit" class="btn" style="text-align:center; width:150px" id="add" name="total">Total</button>
+            </div>
         </div>
-
-
-
-
-
-
-        <div class="app-header">
-            <h1 class="app-title">Add Notes</h1>
-            <button class="add-note">+</button>
-
-            <div class="add-note-form">
-                <textarea id="Description" name="Description" value="@Model.Description" cols="30" rows="10"></textarea>-->
-    @*<button class="save-note">Create Note</button>*@
-    <!--</div>
-        </div>
-
-
-        <div class="button-wrapper">
-            <span class="label">
-                Upload File
-            </span>
-
-            <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File">
-        </div>
-
 
 
     </div>
-        <script src="~/js/AddOrder.js"></script>-->
 </div>
 }
 
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@

@@ -4,10 +4,7 @@
 @{
     ViewBag.Title = "AddOrder_3";
 }
-<h2>Payment</h2>
 
-<link rel="stylesheet" href="~/css/StyleSheetPayment.css" />
-<script src="~/js/JavaScriptPayment.js"></script>
 <br />
 <br />
 <br />
@@ -16,17 +13,19 @@
 <br />
 <br />
 <br />
+<h1 class="heading"> <span>Payment</span> </h1>
 <br />
 <br />
 <br />
-<br />
-<section style="background-color: #e8786e; width: 80%; height: 600px; align-items: center">
-    <h3>Total Amount:</h3>
-    <p1>@Model.Price</p1><span> SR</span>
-    <h3>Number of Hours:</h3>
-    <p1>@Model.duration</p1><span> Hours</span>
-    <h3>Date of Deadlie:</h3>
-    <p1>@Model.finishedDate</p1>
+<section id="wrapper2">
+    <div class="payment">
+        <h3>Name of Service:</h3>
+        <p1>@Model.Service.Name</p1>
+        <h3>Total Amount:</h3>
+        <p1>@Model.Price</p1><span> SR</span>
+        <h3>Date of Deadlie:</h3>
+        <p1>@Model.finishedDate</p1>
+    </div>
 
 </section>
 <section>
@@ -92,4 +91,4 @@
         </footertwo>
     </div><!--wrapper end-->
 </section>
-
+<script src="~/js/JavaScriptPayment.js"></script>
