@@ -1,0 +1,66 @@
+﻿@using CliectProject.Models;
+@model  IEnumerable<Order>
+@{
+    ViewBag.Title = "ClientPage";
+}
+
+<h2>ClientPage</h2>
+
+<h2>Payment</h2>
+
+<h1>Order</h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Service Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>DeadLine</th>
+            <th>View Order</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var o in Model)
+        {
+            if (o.OrderStatus == 1)
+            {
+                <tr>
+                    <td>@o.Service.Name</td>
+                    <td>@o.Description</td>
+                    <td>@o.Price</td>
+                    <td>@o.OrderStatus</td>
+                    <td>@o.finishedDate</td>
+
+                    <td>
+                        <a href="@Url.Action("AddOrder_pay", "Services", new {id=o.ID })" class="btn btn-outline-primary">Pay</a>
+                    </td>
+                </tr>
+              }
+
+            if (o.OrderStatus == 2)
+            {
+                <tr>
+                    <td>@o.Service.Name</td>
+                    <td>@o.Description</td>
+                    <td>@o.Price</td>
+                    <td>@o.OrderStatus</td>
+                    <td>@o.finishedDate</td>
+
+                    <td>
+                        <a href="@Url.Action("RequestView", "Services")" class="btn btn-outline-primary">View</a>
+                    </td>
+                </tr>
+             }
+        }
+
+    </tbody>
+</table>
