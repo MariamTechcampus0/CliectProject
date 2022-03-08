@@ -1,0 +1,67 @@
+﻿@*@model CliectProject.Models.ViewModels.AddOrder*@
+@using CliectProject.Models
+@model Order
+
+@using (Html.BeginForm("BackToAddOrder_3", "Services", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <h1 class="heading"> <span>Add Order</span> </h1>
+    <br />
+    <br />
+    <br />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(x => x.ServiceId)
+    @Html.HiddenFor(x => x.ID)
+   
+    <div class="box-container">
+
+        <div class="box">
+
+            <img src="~/images/Select.gif" />
+            @*<img src="~/images/OD.png" />*@
+            <div class="content">
+                <div class="col-md-10">
+                    Normal
+                    @Html.RadioButtonFor(model => model.IsNormal, "true")
+                    Fast
+                    @Html.RadioButtonFor(model => model.IsNormal, "fasle")
+                </div>
+
+
+                <div>
+                    <label>Qun</label>
+                    <input type="number" id="qty" name="NoOfPaper" placeholder="Qty" value="@Model.NoOfPaper" onclick="add()" />
+                </div>
+
+
+                <div>
+                    <label>Description</label>
+                    <textarea class="form-control" id="Description" name="Description" value="@Model.Description" rows="2" cols="20">Write Your Paper's Description .</textarea>
+
+                </div>
+
+
+                <div>
+                    <label id="price">@Model.Price</label>
+                    <input type="text" id="num" name="Price" value="@Model.Price" />
+                </div>
+
+
+                <button type="submit" class="btn" style="text-align:center; width:150px" id="add" name="total">Total</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+}
+

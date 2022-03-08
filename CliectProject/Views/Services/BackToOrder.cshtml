@@ -1,5 +1,5 @@
 ﻿@using CliectProject.Models;
-@model Service
+@model Order
 @{
     ViewBag.Title = "BackToOrder";
 }
@@ -18,13 +18,13 @@
 
     <div class="box-container">
 
-        @if (Model.Sale == false)
+        @if (Model.Service.Sale == false)
         {
             <div class="box">
-                <img src="@Url.Content(Model.Photo)" alt="">
+                <img src="@Url.Content(Model.Service.Photo)" alt="">
                 <div class="content">
-                    <h3>@Model.Name</h3>
-                    <p>@Model.Description</p>
+                    <h3>@Model.Service.Name</h3>
+                    <p>@Model.Service.Description</p>
 
 
                 </div>
@@ -32,19 +32,20 @@
         }
         else
         {
-            <div class="box">
-                <span>Sale</span>
-                <img src="@Url.Content(Model.Photo)" alt="">
-                <div class="content">
-                    <h3>@Model.Name</h3>
-                    <p>@Model.Description</p>
+    <div class="box">
+        <span>Sale</span>
+        <img src="@Url.Content(Model.Service.Photo)" alt="">
+        <div class="content">
+            <h3>@Model.Service.Name</h3>
+            <p>@Model.Service.Description</p>
 
 
-                </div>
-            </div>
+
+        </div>
+    </div>
         }
     </div>
 
-    @Html.Action("AddOrder_2", new { id = Model.Id })
+    @Html.Action("BackToAddOrder_2", new { id = Model.ID })
 
 </section>

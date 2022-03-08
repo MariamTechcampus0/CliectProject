@@ -1,0 +1,47 @@
+﻿@using CliectProject.Models
+@model List<FileModel>
+@{
+    ViewBag.Title = "RequestView";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>RequestView</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>File name </th>
+        <th></th>
+    </tr>
+    @foreach (FileModel file in Model)
+    {
+        <tr>
+            <th>@file.FileName</th>
+            <th>@Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName })</th>
+        </tr>
+
+              <a href="@Url.Action("ClientPageFinish", "Services",new { id = file.OrderID })" class="btn" style="text-align:center; width:150px">
+     Satisfied</a>
+            <a href="@Url.Action("SendReview", "Services",new { id = file.OrderID })" class="btn" style="text-align:center; width:150px">Request Review</a>
+
+
+
+
+            }
+
+
+
+
+    </table>

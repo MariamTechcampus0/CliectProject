@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CliectProject.Models;
+using CliectProject.Models.ViewModels;
 
 namespace CliectProject.Controllers
 {
     public class HomeController : Controller
     {
+        public PaperHelpDbEntities1 db = new PaperHelpDbEntities1();
         public ActionResult Index()
         {
-            return View();
+            var s = db.Services.ToList();
+            return View(s);
+           
         }
 
         public ActionResult About()

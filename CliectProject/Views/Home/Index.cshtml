@@ -1,4 +1,6 @@
-﻿@{
+﻿@using CliectProject.Models
+@model IEnumerable<Service>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -34,68 +36,24 @@
     <h1 class="heading"> Offers <span>Services</span> </h1>
 
     <div class="box-container">
+        @foreach (var ss in Model)
+        {
 
-        <div class="box">
-            <span>Sale</span>
-            <img src="~/images/port-img1.jpg" alt="">
-            <div class="content">
-                <h3>web design</h3>
-                <p>1st may, 2021</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
-            </div>
-        </div>
+            if (ss.Sale == true)
+            {
 
-        <div class="box">
-            <span>Sale</span>
-            <img src="~/images/port-img2.jpg" alt="">
-            <div class="content">
-                <h3>web design</h3>
-                <p>1st may, 2021</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
-            </div>
-        </div>
 
-        <div class="box">
-            <span>Sale</span>
-            <img src="~/images/port-img3.jpg" alt="">
-            <div class="content">
-                <h3>web design</h3>
-                <p>1st may, 2021</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <span>Sale</span>
-            <img src="~/images/port-img4.jpg" alt="">
-            <div class="content">
-                <h3>web design</h3>
-                <p>1st may, 2021</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <span>Sale</span>
-            <img src="~/images/port-img5.jpg" alt="">
-            <div class="content">
-                <h3>web design</h3>
-                <p>1st may, 2021</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <span>Sale</span>
-            <img src="~/images/port-img6.jpg" alt="">
-            <div class="content">
-                <h3>web design</h3>
-                <p>1st may, 2021</p>
-                <a href="#" class="btn" style="text-align:center; width:150px">Order Now</a>
-            </div>
-
-        </div>
-
+                <div class="box">
+                    <span>Sale</span>
+                    <img src="@Url.Content(ss.Photo)" alt="">
+                    <div class="content">
+                        <h3>@ss.Name</h3>
+                        <p>@ss.Description</p>
+                        <a href="@Url.Action("Order", "Services", new { id = ss.Id })" class="btn" style="text-align:center; width:150px">Order Now</a>
+                    </div>
+                </div>
+            }
+        }
 
     </div>
 
