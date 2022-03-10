@@ -6,61 +6,212 @@
 
 <h2>ClientPage</h2>
 
-<h2>Payment</h2>
+<br />
+<br />
+<br />
+<br />
+<br />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h1>Order</h1>
-<br />
-<br />
-<br />
-<br />
-<br />
+<link href="~/css/ClientPages.css" rel="stylesheet" />
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h1 class="heading-section">List Of Orders</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-wrap">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>DeadLine</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
 
+                        <tbody>
+                            @foreach (var o in Model)
+                            {
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Service Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th>DeadLine</th>
-            <th>View Order</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var o in Model)
-        {
-            if (o.OrderStatus == 1)
-            {
-                <tr>
-                    <td>@o.Service.Name</td>
+                                if (o.OrderStatus == 1)
+                                {
+                <tr class="alert" role="alert">
+                    <td class="d-flex align-items-center">
+                        <div class="pl-3 email">
+                            <div>@o.Service.Name</div>
+                        </div>
+                    </td>
                     <td>@o.Description</td>
                     <td>@o.Price</td>
-                    <td>@o.OrderStatus</td>
+                    <td class="status">
+                        @{ if (o.OrderStatus == 1)
+                            {
+        <span class="waiting">WaitPayment</span> } }
+                    </td>
                     <td>@o.finishedDate</td>
-
                     <td>
+
                         <a href="@Url.Action("AddOrder_pay", "Services", new {id=o.ID })" class="btn btn-outline-primary">Pay</a>
-                    </td>
-                </tr>
-              }
 
-            if (o.OrderStatus == 2)
-            {
-                <tr>
-                    <td>@o.Service.Name</td>
+
+                        <form method="post" action="@Url.Action("Delete", "Services", new { id = o.ID})"
+                              style="display:inline">
+
+                            <button type="submit" class="close" data-dismiss="alert" aria-label="Close" onclick="return confirm('Are You Sure?')">
+                                <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                            </button>
+
+                        </form>
+
+
+                    </td>
+                </tr> }
+
+                                if (o.OrderStatus == 2)
+                                {
+                <tr class="alert" role="alert">
+                    <td class="d-flex align-items-center">
+                        <div class="img" style="background-image:@Url.Content(o.Service.Photo)"></div>
+                        <div class="pl-3 email">
+                            <span>@o.Service.Name</span>
+                        </div>
+                    </td>
+
                     <td>@o.Description</td>
                     <td>@o.Price</td>
-                    <td>@o.OrderStatus</td>
+                    <td class="status">
+                        @{ if (o.OrderStatus == 2)
+                            {
+        <span class="active">PindingAdmin</span> } }
+                    </td>
                     <td>@o.finishedDate</td>
 
                     <td>
-                        <a href="@Url.Action("RequestView", "Services",new { id = o.ID })" class="btn btn-outline-primary">View</a>
-                    </td>
-                </tr>
-             }
-        }
+                        <a href="@Url.Action("RequestView", "Services", new {id=o.ID})" class="btn btn-outline-primary"> View</a>
 
-    </tbody>
-</table>
+
+
+
+                    </td>
+                </tr> }
+
+
+                                if (o.OrderStatus == 4)
+                                {
+                <tr class="alert" role="alert">
+                    <td class="d-flex align-items-center">
+                        <div class="img" style="background-image:@Url.Content(o.Service.Photo)"></div>
+                        <div class="pl-3 email">
+                            <span>@o.Service.Name</span>
+                        </div>
+                    </td>
+
+                    <td>@o.Description</td>
+                    <td>@o.Price</td>
+                    <td class="status">
+                        @{ if (o.OrderStatus == 4)
+                            {
+        <span class="active">Finished</span> } }
+                    </td>
+                    <td>@o.finishedDate</td>
+
+                    <td>
+                        <a href="@Url.Action("RequestView", "Services", new {id=o.ID})" class="btn btn-outline-primary"> View</a>
+
+
+
+
+                    </td>
+                </tr>}
+
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<link href="~/css/Tabs.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+@*<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+<!--<script src="~/js/tabs.js"></script>-->
+<!------ Include the above in your HEAD tag ---------->
+<!-- Tabs -->
+<!--<section id="tabs">
+    <div class="container">
+        <h6 class="section-title h1">Tabs</h6>
+        <div class="row">
+            <div class="col-xs-12 ">
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Pinding for Admin</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Waiting For payment</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Finished</a>
+                        <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">In Progress</a>
+                    </div>
+                </nav>
+                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                        @Html.Partial("PindingForAdminStatus")
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        @Html.Partial("WaitingStatus")
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                        @Html.Partial("FinishedStust")
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>-->
+<ul>
+    <li class="active"> <a data-toggle="tab" href="#pay">Waiting for payment</a></li>
+    <li><a data-toggle="tab" href="#Admin">pinding for Admin</a></li>
+    <li><a data-toggle="tab" href="#Finish">finished</a></li>
+</ul>
+<div class="tab-content">
+    <div id="pay" class="tab-pane fade in active">
+        @Html.Partial("WaitingStatus")
+    </div>
+    <div id="Admin" class="tab-pane fade">
+        @Html.Partial("PindingForAdminStatus")
+    </div>
+    <div id="Finish" class="tab-pane fade">
+        @Html.Partial("FinishedStust")
+    </div>
+</div>

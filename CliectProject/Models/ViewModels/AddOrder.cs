@@ -21,6 +21,7 @@ namespace CliectProject.Models.ViewModels
         public string Description { get; set; }
         public int duration { get; set; }
         public int ServiceId { get; set; }
+        public string ClientId { get; set; }
         public DateTime startDate { get; set; }
 
 

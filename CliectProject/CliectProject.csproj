@@ -172,6 +172,7 @@
     <Compile Include="App_Data\RouteConfig.cs" />
     <Compile Include="App_Data\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
@@ -255,6 +256,7 @@
     <Content Include="css\ClientPages.css" />
     <Content Include="css\style.css" />
     <Content Include="css\StyleSheetPayment.css" />
+    <Content Include="css\Tabs.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -286,6 +288,7 @@
     <Content Include="js\AddOrder.js" />
     <Content Include="js\JavaScriptPayment.js" />
     <Content Include="js\script.js" />
+    <Content Include="js\tabs.js" />
     <Content Include="lib\jquery-validate\additional-methods.js" />
     <Content Include="lib\jquery-validate\additional-methods.min.js" />
     <Content Include="lib\jquery-validate\jquery.validate.js" />
@@ -507,6 +510,10 @@
     <Content Include="Views\Shared\BackToEditOrderSale.cshtml" />
     <Content Include="Views\Services\RequestView.cshtml" />
     <Content Include="Views\Services\MyOrders.cshtml" />
+    <Content Include="Views\Shared\WaitingStatus.cshtml" />
+    <Content Include="Views\Shared\PindingForAdminStatus.cshtml" />
+    <Content Include="Views\Shared\FinishedStust.cshtml" />
+    <Content Include="Views\ClientHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

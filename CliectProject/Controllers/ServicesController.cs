@@ -23,11 +23,12 @@ namespace CliectProject.Controllers
             db = new PaperHelpDbEntities1();
         }
         // GET: Services
-       public ActionResult MyOrders()
+       public ActionResult MyOrders(string id)
         {
             string userid = User.Identity.GetUserId();
 
-            var orders = db.Orders.Where(x => x.ClientId == userid).ToList();
+            var orders = db.Orders.Where(x => x.ClientId == id).ToList();
+            //var myorder = db.Orders.Find(id);
             return View(orders);
         }
 
@@ -71,12 +72,14 @@ namespace CliectProject.Controllers
             //AddOrder o = new AddOrder();
             //if (ModelState.IsValid)
             //{
-                var s = db.Services.FirstOrDefault(b => b.Id == model.ServiceId);
+             var s = db.Services.FirstOrDefault(b => b.Id == model.ServiceId);
+            string userid = User.Identity.GetUserId();
             if (s.Sale == true) {
                 model.Price = (decimal)(model.NoOfPaper * s.NormalPrice);
                 model.duration = (byte)(model.NoOfPaper * s.NormalHour);
                 model.Description = model.Description;
                 model.startDate = DateTime.Today;
+                model.ClientId = userid;
 
                 double hourtoday = model.duration;
                 Order O = new Order();
@@ -87,7 +90,8 @@ namespace CliectProject.Controllers
                 O.NoOfPaper = model.NoOfPaper;
                 O.OrderStatus = (byte)OrderStatus.WaitPayment;
                 O.startDate = model.startDate;
-
+                //string userid = User.Identity.GetUserId();
+                O.ClientId = userid;
 
 
                 O.finishedDate = DateTime.Now.AddHours(hourtoday);
@@ -133,9 +137,10 @@ namespace CliectProject.Controllers
             O.OrderStatus = (byte)OrderStatus.WaitPayment;
             O.startDate = model.startDate;
 
-          
+                //string userid = User.Identity.GetUserId();
+                O.ClientId = userid;
 
-            O.finishedDate = DateTime.Now.AddHours(hourtoday);
+                O.finishedDate = DateTime.Now.AddHours(hourtoday);
            
 
             db.Orders.Add(O);
@@ -153,12 +158,17 @@ namespace CliectProject.Controllers
         {
             var myorder = db.Orders.Find(id);
             myorder.OrderStatus = (byte)OrderStatus.PindingAdmin;
+            string userid = User.Identity.GetUserId();
+            myorder.ClientId = userid;
             db.SaveChanges();
-            var O = db.Orders.ToList();
+         
 
+            var orders = db.Orders.Where(x => x.ClientId == userid).ToList();
+            //return View(orders);
 
+            //return View("~/Views/ClientHome/Index.cshtml");
+            return RedirectToAction("Index", "ClientHome");
 
-            return View(O);
         }
 
 
@@ -166,31 +176,32 @@ namespace CliectProject.Controllers
         {
             var myorder = db.Orders.Find(id);
             myorder.OrderStatus = (byte)OrderStatus.Finished;
+            string userid = User.Identity.GetUserId();
+            myorder.ClientId = userid;
+
             db.SaveChanges();
-            var O = db.Orders.ToList();
 
-
-
-            return View(O);
+            //var orders = db.Orders.Where(x => x.ClientId == userid).ToList();
+            return RedirectToAction("Index", "ClientHome");
         }
 
 
 
-        [HttpPost]
-        public ActionResult ClientPage(Order Update)
-        {
-            Update.OrderStatus =(byte?)OrderStatus.PindingAdmin;
-            db.Entry(Update).State = EntityState.Modified;
-            db.SaveChanges();
-            //Order a = new Order() { ID = id };
+        //[HttpPost]
+        //public ActionResult ClientPage(Order Update)
+        //{
+        //    Update.OrderStatus =(byte?)OrderStatus.PindingAdmin;
+        //    db.Entry(Update).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    //Order a = new Order() { ID = id };
 
 
-            //a.OrderStatus = (byte?)OrderStatus.PindingAdmin;
+        //    //a.OrderStatus = (byte?)OrderStatus.PindingAdmin;
 
 
 
-            return View(Update);
-        }
+        //    return View(Update);
+        //}
 
 
 
@@ -201,8 +212,11 @@ namespace CliectProject.Controllers
             myorder.startDate = DateTime.Now;
             double hourtoday1 = (double)myorder.duration;
             myorder.finishedDate = DateTime.Now.AddHours(hourtoday1);
+            string userid = User.Identity.GetUserId();
+            myorder.ClientId = userid;
             db.SaveChanges();
             return View(myorder);
+
         }
 
 
@@ -258,7 +272,8 @@ namespace CliectProject.Controllers
                 myorder.OrderStatus = (byte)OrderStatus.WaitPayment;
                 myorder.startDate = o.startDate;
 
-
+                string userid = User.Identity.GetUserId();
+                myorder.ClientId = userid;
 
                 myorder.finishedDate = DateTime.Now.AddHours(hourtoday);
 
@@ -305,9 +320,10 @@ namespace CliectProject.Controllers
             myorder.OrderStatus = (byte)OrderStatus.WaitPayment;
             myorder.startDate = o.startDate;
 
+                string userid = User.Identity.GetUserId();
+                myorder.ClientId = userid;
 
-
-            myorder.finishedDate = DateTime.Now.AddHours(hourtoday);
+                myorder.finishedDate = DateTime.Now.AddHours(hourtoday);
 
 
             //db.Orders.Add(myorder);
@@ -339,5 +355,19 @@ namespace CliectProject.Controllers
             byte[] bytes = System.IO.File.ReadAllBytes(path);
             return File(bytes, "application/octet-stream", fileName);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
