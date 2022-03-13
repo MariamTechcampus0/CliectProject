@@ -7,41 +7,58 @@
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<h2>RequestView</h2>
 
-<table class="table table-striped">
+
+@*<table class="table table-striped">
     <tr>
         <th>File name </th>
         <th></th>
-    </tr>
-    @foreach (FileModel file in Model)
-    {
-        <tr>
+    </tr>*@
+@foreach (FileModel file in Model)
+{
+    @*<tr>
             <th>@file.FileName</th>
             <th>@Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName })</th>
         </tr>
 
-              <a href="@Url.Action("ClientPageFinish", "Services",new { id = file.OrderID })" class="btn" style="text-align:center; width:150px">
-     Satisfied</a>
-            <a href="@Url.Action("SendReview", "Services",new { id = file.OrderID })" class="btn" style="text-align:center; width:150px">Request Review</a>
+        <a href="@Url.Action("ClientPageFinish", "Services",new { id = file.OrderID })" class="btn" style="text-align:center; width:150px">
+            Satisfied
+        </a>
+        <a href="@Url.Action("SendReview", "Services",new { id = file.OrderID })" class="btn" style="text-align:center; width:150px">Request Review</a>*@
+<link href="~/css/Download.css" rel="stylesheet" />
+
+
+    <div class="container">
+        <section id="hero">
+            <div class="hero-text">
+                <h5>Service Name</h5>
+                <h1>Download!</h1>
+                <p>@file.FileName</p>
+                <button>@Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName })</button>
+
+               <a href="@Url.Action("ClientPageFinish", "Services",new { id = file.OrderID })" class="btn2" style="text-align:center; width:150px">
+            Satisfied
+        </a>
+                
+            </div>
+            <div class="hero-image">
+                @*<img src="~/images/Download-pana.png" />*@
+                <img src="~/images/Download-pana.svg" />
+            </div>
+        </section>
+        <section id="sub-content">
+            <div class="sub-left">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur numquam harum nihil deserunt assumenda doloribus corporis, fugit minima maiores similique!</p>
+                <a href="@Url.Action("SendReview", "Services",new { id = file.OrderID })" class="btn22">Request Review</a>
+
+            </div>
+        </section>
+    </div>
+
+
+}
 
 
 
 
-            }
-
-
-
-
-    </table>
+@*</table>*@

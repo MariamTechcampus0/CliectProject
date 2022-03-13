@@ -9,42 +9,41 @@
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 
 <link href="~/css/Tabs.css" rel="stylesheet" />
+<h1 class="heading"> <span>My Orders</span> </h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-<div class="tabset">
-    <!-- Tab 1 -->
-    <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
-    <label for="tab1">Wait</label>
-    <!-- Tab 2 -->
-    <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-    <label for="tab2">Admin</label>
-    <!-- Tab 3 -->
-    <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-    <label for="tab3">Finish</label>
+<div style="margin-left:300px">
+    <div class="tabset">
+        <!-- Tab 1 -->
+        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+        <label for="tab1">Waiting for Payment</label>
+        <!-- Tab 2 -->
+        <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+        <label for="tab2">Waiting for Admin</label>
+        <!-- Tab 3 -->
+        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+        <label for="tab3">Finish</label>
 
-    <div class="tab-panels">
-        <section id="marzen" class="tab-panel">
-            @Html.Partial("WaitingStatus")
-        </section>
-        <section id="rauchbier" class="tab-panel">
-            @Html.Partial("PindingForAdminStatus")
-        </section>
-        <section id="dunkles" class="tab-panel">
-            @Html.Partial("FinishedStust")
-        </section>
+        <div class="tab-panels">
+            <section id="marzen" class="tab-panel">
+                @Html.Partial("WaitingStatus")
+            </section>
+            <section id="rauchbier" class="tab-panel">
+                @Html.Partial("PindingForAdminStatus")
+            </section>
+            <section id="dunkles" class="tab-panel">
+                @Html.Partial("FinishedStust")
+            </section>
+        </div>
+
     </div>
-
 </div>
 
 
@@ -56,136 +55,3 @@
 
 
 
-@*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link href="~/css/ClientPages.css" rel="stylesheet" />
-    <section class="ftco-section">
-     <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <h1 class="heading-section">List Of Orders</h1>
-                </div>
-            </div>
-        <div class="row">
-           <div class="col-md-12">
-            <div class="table-wrap">
-            <table class="table table-responsive-xl">
-                            <thead>
-                                <tr>
-                                    <th>Service</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                    <th>DeadLine</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                              @foreach (var o in Model)
-                                {
-
-                                    if (o.OrderStatus == 1)
-                                    {
-                            <tr class="alert" role="alert">
-                                <td class="d-flex align-items-center">
-                                    <div class="pl-3 email">
-                                        <div>@o.Service.Name</div>
-                                    </div>
-                                </td>
-                                <td>@o.Description</td>
-                                <td>@o.Price</td>
-                                <td class="status">
-                                    @{ if (o.OrderStatus == 1)
-                                        {
-                            <span class="waiting">WaitPayment</span> } }
-                                </td>
-                                <td>@o.finishedDate</td>
-                                <td>
-
-                                    <a href="@Url.Action("AddOrder_pay", "Services", new {id=o.ID })" class="btn btn-outline-primary">Pay</a>
-
-
-                                    <form method="post" action="@Url.Action("Delete", "Services", new { id = o.ID})"
-                                          style="display:inline">
-
-                                        <button type="submit" class="close" data-dismiss="alert" aria-label="Close" onclick="return confirm('Are You Sure?')">
-                                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                                        </button>
-
-                                    </form>
-
-
-                                </td>
-                            </tr>
-     }
-
-                                    if (o.OrderStatus == 2)
-                        {
-                            <tr class="alert" role="alert">
-                                <td class="d-flex align-items-center">
-                                    <div class="img" style="background-image:@Url.Content(o.Service.Photo)"></div>
-                                    <div class="pl-3 email">
-                                        <span>@o.Service.Name</span>
-                                    </div>
-                                </td>
-
-                                <td>@o.Description</td>
-                                <td>@o.Price</td>
-                                <td class="status">
-                                    @{ if (o.OrderStatus == 2)
-                                        {
-                            <span class="active">PindingAdmin</span> } }
-                                </td>
-                                <td>@o.finishedDate</td>
-
-                                <td>
-                                    <a href="@Url.Action("RequestView", "Services", new {id=o.ID})" class="btn btn-outline-primary"> View</a>
-
-
-
-
-                                </td>
-                            </tr>
-    }
-
-
-                                    if (o.OrderStatus == 4)
-                        {
-                            <tr class="alert" role="alert">
-                                <td class="d-flex align-items-center">
-                                    <div class="img" style="background-image:@Url.Content(o.Service.Photo)"></div>
-                                    <div class="pl-3 email">
-                                        <span>@o.Service.Name</span>
-                                    </div>
-                                </td>
-
-                                <td>@o.Description</td>
-                                <td>@o.Price</td>
-                                <td class="status">
-                                    @{ if (o.OrderStatus == 4)
-                                        {
-                            <span class="active">Finished</span> } }
-                                </td>
-                                <td>@o.finishedDate</td>
-
-                                <td>
-                                    <a href="@Url.Action("RequestView", "Services", new {id=o.ID})" class="btn btn-outline-primary"> View</a>
-
-
-
-
-                                </td>
-                            </tr>
-    }
-
-
-                    }
-
-                            </tbody>
-                        </table>
-            </div>
-           </div>
-        </div>
-    </div>
-    </section>*@

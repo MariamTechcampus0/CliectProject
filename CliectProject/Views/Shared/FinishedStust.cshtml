@@ -5,12 +5,12 @@
 <link href="~/css/ClientPages.css" rel="stylesheet" />
 <section class="ftco-section">
     <div class="container">
-        <div class="row justify-content-center">
+        @*<div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
                 <h1 class="heading-section">List Of Orders</h1>
             </div>
-        </div>
-        <div class="row">
+        </div>*@
+        <div class="row" style="margin-top:0px">
             <div class="col-md-12">
                 <div class="table-wrap">
                     <table class="table table-responsive-xl">
@@ -52,9 +52,9 @@
 
                                         <td>
                                             <a href="@Url.Action("RequestView", "Services", new {id=o.ID})" class="btn btn-outline-primary"> View</a>
+                                            
 
-
-
+                                            
 
                                         </td>
                                     </tr>

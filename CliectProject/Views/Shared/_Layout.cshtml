@@ -24,21 +24,24 @@
     <header class="header">
 
         <a href="#" class="logo">Quick.</a>
+      
 
-        <nav class="navbar">
-            @Html.ActionLink("Home", "Index", "Home")
-            @Html.ActionLink("Services", "Index", "Services")
+            <nav class="navbar">
+                @Html.ActionLink("Home", "Index", "Home")
+                @Html.ActionLink("Services", "Index", "Services")
 
-            <a href="#portfolio">How it works?</a>
-            <a href="#services">Why Us?</a>
-            <!-- @Html.ActionLink("About Us", "About", "Home")-->
+                @*<a href="#portfolio">How it works?</a>*@
+                <a href="#services">Why Us?</a>
+                <!-- @Html.ActionLink("About Us", "About", "Home")-->
 
-            @Html.Partial("_LoginPartial")
-        </nav>
+                @Html.Partial("_LoginPartial")
+            </nav>
+        
 
         <div id="menu-btn" class="fas fa-bars"></div>
 
-    </header>
+    </header> 
+   
 
     <!-- header section ends -->
     @RenderBody()
